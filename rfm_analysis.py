@@ -19,9 +19,9 @@ print(cleaned_df.head())
 
 cleaned_df.dropna()
 
-cleaned_df["R_Score"] = pd.qcut(cleaned_df["Recency"], 5, labels=[1,2,3,4,5])
+cleaned_df["R_Score"] = pd.qcut(cleaned_df["Recency"], 5, labels=[5,4,3,2,1])
 cleaned_df["F_Score"] = pd.qcut(cleaned_df["Frequency"].rank(method="first"), 5, labels=[1,2,3,4,5])
-cleaned_df["M_Score"] = pd.qcut(cleaned_df["Monetary"].rank(method="first"), 5, labels=[5,4,3,2,1])
+cleaned_df["M_Score"] = pd.qcut(cleaned_df["Monetary"].rank(method="first"), 5, labels=[1,2,3,4,5])
 
 cleaned_df["RFM_Score"] = cleaned_df[["R_Score","F_Score","M_Score"]].astype(int).sum(axis=1)
 
